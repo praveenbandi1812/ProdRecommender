@@ -31,9 +31,12 @@ def predict():
         Top20_Prod_reviews =    Item_Reviews[Item_Reviews['name'].isin(Top20_Recomm_products_df.index)]
         Top5_recommended_products=Top20_Prod_reviews.groupby(['name']).sum().sort_values(by='user_sentiment',ascending=False)[0:5]
         Top5_recommended_products_df = pd.DataFrame(Top5_recommended_products.index)
-        output = Top5_recommended_products_df.to_string(header=False,index=False)
+        output2 = Top5_recommended_products_df.to_string(header=False,index=False)
+        output= output2.split("\n")
     except Exception as e:
         output = "Sorry, we are unable to predict for the given user"
-    return render_template('index.html', prediction_text='Recommended Products are - {}'.format(output))
+    #return render_template('index.html', header='TOP 5 Recommended Products', prediction_text='Recommended Products are - {}'.format(output))
+    return render_template('index.html', header='TOP 5 Recommended Products', prediction_text=output)
+    #return render_template('index.html',header='Amazing Universe', sub_header='Our universe is quite amazing', list_header="Galaxies!",prediction_text=output, site_title="Camposha.info")
 if __name__ == "__main__":
     app.run()
