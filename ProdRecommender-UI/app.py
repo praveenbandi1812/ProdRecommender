@@ -10,11 +10,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Create Flask object to run
 app = Flask(__name__)
 
-item_final_rating_pk = joblib.load('item_final_rating.pkl')
-Item_Reviews = joblib.load('Item_Reviews.pkl')
-#xgb_model_pk = joblib.load('xgb_model.pkl')
-#Product_Reviews = joblib.load('Product_Reviews_CleanData.pkl')
-#word_vectorizer = joblib.load('word_vectorizer.pkl')
+item_final_rating_pk = joblib.load('pickle/item_final_rating.pkl')
+Item_Reviews = joblib.load('pickle/Item_Reviews.pkl')
+#xgb_model_pk = joblib.load('pickle/xgb_model.pkl')
+#word_vectorizer = joblib.load('pickle/word_vectorizer.pkl')
 
 
 @app.route('/')
